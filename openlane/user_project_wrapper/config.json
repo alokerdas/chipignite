@@ -5,18 +5,39 @@
         "dir::../../verilog/rtl/user_project_wrapper.v"
     ],
     "ROUTING_CORES": 1,
-    "CLOCK_PERIOD": 25,
-    "CLOCK_PORT": "wb_clk_i",
-    "CLOCK_NET": "mprj.clk",
-    "FP_PDN_MACRO_HOOKS": "mprj vccd1 vssd1 vccd1 vssd1",
+    "CLOCK_PERIOD": 10,
+    "CLOCK_PORT": "user_clock2",
+    "CLOCK_NET": "mprj.soc_clk",
+    "FP_PDN_MACRO_HOOKS": [
+        "mprj vccd1 vssd1 vccd1 vssd1",
+        "cpu0 vccd1 vssd1 vccd1 vssd1",
+        "memLword0 vccd1 vssd1 vccd1 vssd1",
+        "memHword0 vccd1 vssd1 vccd1 vssd1",
+        "memLword1 vccd1 vssd1 vccd1 vssd1",
+        "memHword1 vccd1 vssd1 vccd1 vssd1",
+        "memLword2 vccd1 vssd1 vccd1 vssd1",
+        "memHword2 vccd1 vssd1 vccd1 vssd1",
+        "memLword3 vccd1 vssd1 vccd1 vssd1",
+        "memHword3 vccd1 vssd1 vccd1 vssd1"
+    ],
     "MACRO_PLACEMENT_CFG": "dir::macro.cfg",
     "MAGIC_DEF_LABELS": 0,
     "VERILOG_FILES_BLACKBOX": [
         "dir::../../verilog/rtl/defines.v",
-        "dir::../../verilog/rtl/user_proj_example.v"
+        "dir::../../verilog/rtl/soc_config.v",
+        "dir::../../verilog/rtl/cpu.v",
+        "dir::../../dependencies/pdks/sky130A/libs.ref/sky130_sram_macros/verilog/sky130_sram_1kbyte_1rw1r_8x1024_8.v"
     ],
-    "EXTRA_LEFS": "dir::../../lef/user_proj_example.lef",
-    "EXTRA_GDS_FILES": "dir::../../gds/user_proj_example.gds",
+    "EXTRA_LEFS": [
+        "dir::../../lef/cpu.lef",
+        "dir::../../lef/soc_config.lef",
+        "dir::../../dependencies/pdks/sky130A/libs.ref/sky130_sram_macros/lef/sky130_sram_1kbyte_1rw1r_8x1024_8.lef"
+    ],
+    "EXTRA_GDS_FILES": [
+        "dir::../../gds/cpu.gds",
+        "dir::../../gds/soc_config.gds",
+        "dir::../../dependencies/pdks/sky130A/libs.ref/sky130_sram_macros/gds/sky130_sram_1kbyte_1rw1r_8x1024_8.gds"
+    ],
     "BASE_SDC_FILE": "dir::base_user_project_wrapper.sdc",
     "IO_SYNC": 0,
     "FP_PDN_CHECK_NODES": 0,
