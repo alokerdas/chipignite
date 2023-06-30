@@ -83,6 +83,7 @@ wire [9:0] adr_mem;
 wire [11:0] adr_cpu;
 wire [15:0] cpdatin, cpdatout, memdatin0, memdatin1, memdatin2, memdatin3, memdatout;
 wire cpuen, cpurw, memrwb, enkbd, endisp, rst, clk;
+wire [7:0] memdatL;
 
 /*--------------------------------------*/
 /* User project is instantiated  here   */
@@ -94,6 +95,7 @@ soc_config mprj (
 	.vssd1(vssd1),	// User area 1 digital ground
 `endif
 
+    .user_clock2(user_clock2),
     .wb_clk_i(wb_clk_i),
     .wb_rst_i(wb_rst_i),
 
