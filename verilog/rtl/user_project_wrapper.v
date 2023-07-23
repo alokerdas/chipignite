@@ -164,6 +164,21 @@ cpu cpu0 (
     .display(io_out[29:22])
 );
 
+wire mis, mos;
+assign mis = keyboard[7];
+spi_master spi0 (
+    .reset(rst),
+    .clock_in(clk),
+    .load(endisp),
+    .unload(enkbd),
+    .datain(io_out[29:22]),
+    .dataout(io_in[37:30]),
+    .sclk(),
+    .miso(mis),
+    .mosi(mos),
+    .ssn(~enkbd)
+);
+
 sky130_sram_1kbyte_1rw1r_8x1024_8 #(.NUM_WMASKS(2)) memLword0 (
 `ifdef USE_POWER_PINS
     .vccd1(vccd1),      // User area 1 1.8V power
@@ -217,6 +232,7 @@ sky130_sram_1kbyte_1rw1r_8x1024_8 #(.NUM_WMASKS(2)) memHword1 (
     .csb0(memenb[1]),
     .wmask0({cpuen, cpuen})
 );
+
 sky130_sram_1kbyte_1rw1r_8x1024_8 #(.NUM_WMASKS(2)) memLword2 (
 `ifdef USE_POWER_PINS
     .vccd1(vccd1),      // User area 1 1.8V power
@@ -243,6 +259,7 @@ sky130_sram_1kbyte_1rw1r_8x1024_8 #(.NUM_WMASKS(2)) memHword2 (
     .csb0(memenb[2]),
     .wmask0({cpuen, cpuen})
 );
+
 sky130_sram_1kbyte_1rw1r_8x1024_8 #(.NUM_WMASKS(2)) memLword3 (
 `ifdef USE_POWER_PINS
     .vccd1(vccd1),      // User area 1 1.8V power
