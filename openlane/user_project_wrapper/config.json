@@ -11,6 +11,7 @@
     "FP_PDN_MACRO_HOOKS": [
         "mprj vccd1 vssd1 vccd1 vssd1,",
         "cpu0 vccd1 vssd1 vccd1 vssd1,",
+        "spi0 vccd1 vssd1 vccd1 vssd1,",
         "memLword0 vccd1 vssd1 vccd1 vssd1,",
         "memHword0 vccd1 vssd1 vccd1 vssd1,",
         "memLword1 vccd1 vssd1 vccd1 vssd1,",
@@ -26,16 +27,19 @@
         "dir::../../verilog/rtl/defines.v",
         "dir::../../verilog/rtl/soc_config.v",
         "dir::../../verilog/rtl/cpu.v",
+        "dir::../../verilog/rtl/spi_master.v",
         "dir::../../dependencies/pdks/sky130A/libs.ref/sky130_sram_macros/verilog/sky130_sram_1kbyte_1rw1r_8x1024_8.v"
     ],
     "EXTRA_LEFS": [
         "dir::../../lef/cpu.lef",
         "dir::../../lef/soc_config.lef",
+        "dir::../../lef/spi_master.lef",
         "dir::../../dependencies/pdks/sky130A/libs.ref/sky130_sram_macros/lef/sky130_sram_1kbyte_1rw1r_8x1024_8.lef"
     ],
     "EXTRA_GDS_FILES": [
         "dir::../../gds/cpu.gds",
         "dir::../../gds/soc_config.gds",
+        "dir::../../gds/spi_master.gds",
         "dir::../../dependencies/pdks/sky130A/libs.ref/sky130_sram_macros/gds/sky130_sram_1kbyte_1rw1r_8x1024_8.gds"
     ],
     "BASE_SDC_FILE": "dir::base_user_project_wrapper.sdc",
