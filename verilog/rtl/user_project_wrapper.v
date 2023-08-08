@@ -83,7 +83,7 @@ wire [9:0] adr_mem;
 wire [11:0] adr_cpu;
 wire [15:0] cpdatin, cpdatout, memdatin0, memdatin1, memdatin2, memdatin3, memdatout;
 wire cpuen, cpurw, memrwb, enkbd, endisp, rst, clk;
-wire [7:0] memdatL;
+wire [7:0] memdatL, spi_in, spi_out;
 
 /*--------------------------------------*/
 /* User project is instantiated  here   */
@@ -160,23 +160,22 @@ cpu cpu0 (
     .rdwr(cpurw),
     .en(cpuen),
     .rst(rst),
-    .keyboard(io_in[37:30]),
-    .display(io_out[29:22])
+//    .keyboard(io_in[37:30]),
+//    .display(io_out[29:22])
+    .keyboard(spi_in),
+    .display(spi_out)
 );
 
-wire mis, mos;
-assign mis = keyboard[7];
 spi_master spi0 (
-    .reset(rst),
+    .rst(rst),
     .clock_in(clk),
     .load(endisp),
     .unload(enkbd),
-    .datain(io_out[29:22]),
-    .dataout(io_in[37:30]),
-    .sclk(),
-    .miso(mis),
-    .mosi(mos),
-    .ssn(~enkbd)
+    .datain(spi_out),
+    .dataout(spi_in),
+    .miso(io_in[37]),
+    .mosi(io_out[29]),
+    .ssn(enkbd)
 );
 
 sky130_sram_1kbyte_1rw1r_8x1024_8 #(.NUM_WMASKS(2)) memLword0 (

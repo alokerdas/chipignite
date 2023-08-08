@@ -1,5 +1,5 @@
 module spi_master (
-  reset,
+  rst,
   clock_in,
   load,
   unload,
@@ -11,7 +11,7 @@ module spi_master (
   ssn
 );
 
-  input reset, clock_in, miso, load, unload;
+  input rst, clock_in, miso, load, unload;
   input [7:0] datain;
   output [7:0] dataout;
   output sclk, mosi, ssn;
@@ -23,8 +23,8 @@ module spi_master (
   assign mosi = datareg[7];
   assign ssn = |cntreg;
 
-  always @(posedge clock_in or posedge reset) begin
-    if (reset) begin
+  always @(posedge clock_in or posedge rst) begin
+    if (rst) begin
       datareg  <= 8'h00;
     end else if (load) begin
       datareg <= datain;
@@ -36,8 +36,8 @@ module spi_master (
     end
   end
 
-  always @(posedge clock_in or posedge reset) begin
-    if (reset) begin
+  always @(posedge clock_in or posedge rst) begin
+    if (rst) begin
       cntreg  <= 3'h0;
     end else if (ssn || load) begin
       cntreg  <= cntreg + 1;

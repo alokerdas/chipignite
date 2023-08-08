@@ -11,7 +11,6 @@
     "FP_PDN_MACRO_HOOKS": [
         "mprj vccd1 vssd1 vccd1 vssd1,",
         "cpu0 vccd1 vssd1 vccd1 vssd1,",
-        "spi0 vccd1 vssd1 vccd1 vssd1,",
         "memLword0 vccd1 vssd1 vccd1 vssd1,",
         "memHword0 vccd1 vssd1 vccd1 vssd1,",
         "memLword1 vccd1 vssd1 vccd1 vssd1,",
